@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Welcome.DataAccessLayer\Welcome.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Welcome.DataEntities\Welcome.DataEntities.csproj" />
+    <ProjectReference Include="..\Welcome.DataTransferObjects\Welcome.DataTransferObjects.csproj" />
+    <ProjectReference Include="..\Welcome.ServiceAbstracts\Welcome.ServiceAbstracts.csproj" />
+  </ItemGroup>
+
+</Project>
