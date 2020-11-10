@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Welcome.DataAccessLayer;
@@ -20,9 +21,24 @@ namespace Welcome.Services
             _dbContext = context;
             _mapper = mapper;
         }
+
+        public async Task<ConfigMapDto> GetConfigMapById(string id)
+        {
+            var entity = await _dbContext.ConfigMaps.FirstOrDefaultAsync(c => c.Id.ToLower() == id.ToLower());
+            var dto = _mapper.Map<ConfigMap, ConfigMapDto>(entity);
+            return dto;
+        }
+
         public async Task<List<ConfigMapDto>> GetConfigMaps()
         {
             var entities = await _dbContext.ConfigMaps.ToListAsync();
+            var dtoList = _mapper.Map<List<ConfigMap>, List<ConfigMapDto>>(entities);
+            return dtoList;
+        }
+
+        public async Task<List<ConfigMapDto>> GetConfigMapsByKey(string key)
+        {
+            var entities = await _dbContext.ConfigMaps.Where(c => c.Key.Contains(key)).ToListAsync();
             var dtoList = _mapper.Map<List<ConfigMap>, List<ConfigMapDto>>(entities);
             return dtoList;
         }

@@ -8,5 +8,8 @@ namespace Welcome.ServiceAbstracts
     public interface IConfigMapService
     {
         Task<List<ConfigMapDto>> GetConfigMaps();
+        Task<ConfigMapDto> GetConfigMapById(string id);
+        Task<List<ConfigMapDto>> GetConfigMapsByKey(string key);
+
     }
 }

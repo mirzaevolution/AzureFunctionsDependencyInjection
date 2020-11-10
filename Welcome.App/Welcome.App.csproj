@@ -9,6 +9,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.7" />
+    <PackageReference Include="Umamimolecule.AzureFunctionsMiddleware" Version="1.3.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Welcome.DataAccessLayer\Welcome.DataAccessLayer.csproj" />

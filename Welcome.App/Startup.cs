@@ -10,6 +10,7 @@ using Welcome.Services;
 using Welcome.DataAccessLayer;
 using Microsoft.Extensions.Configuration;
 using AutoMapper;
+using System.Diagnostics;
 
 [assembly: FunctionsStartup(typeof(Welcome.App.Startup))]
 namespace Welcome.App
@@ -18,12 +19,14 @@ namespace Welcome.App
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
+            var configuration = builder.GetContext().Configuration;
             builder.Services.AddDbContext<WelcomeDbContext>(options =>
             {
-                options.UseSqlServer(builder.GetContext().Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
             builder.Services.AddScoped<IConfigMapService, ConfigMapService>();
             builder.Services.AddAutoMapper(typeof(Startup));
+
         }
     }
 }
